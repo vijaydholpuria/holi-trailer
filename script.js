@@ -122,9 +122,6 @@ function startTrailer(group, your, lang) {
             }
 
             typeEffect(finalMessage, screen, () => {
-                let music = document.getElementById("bgMusic");
-                music.pause();
-                music.currentTime = 0;
 
                 // 🔥 YAHAN SHOW HOGA SHARE BUTTON
                 document.getElementById("shareBox").style.display = "block";
@@ -205,5 +202,3 @@ function startConfetti() {
 
     setInterval(draw, 20);
 }
-let dhol = new Audio("Holi.mp3");
-dhol.play();
