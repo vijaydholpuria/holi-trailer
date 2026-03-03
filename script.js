@@ -92,8 +92,6 @@ function startTrailer(group, your, lang) {
     const screen = document.getElementById("screen");
     screen.style.display = "block";
 
-    document.getElementById("bgMusic").play();
-
     let texts = textsData[lang] || textsData["hinglish"];
 
     let i = 0;
@@ -122,6 +120,7 @@ function startTrailer(group, your, lang) {
             }
 
             typeEffect(finalMessage, screen, () => {
+                
 
                 // 🔥 YAHAN SHOW HOGA SHARE BUTTON
                 document.getElementById("shareBox").style.display = "block";
