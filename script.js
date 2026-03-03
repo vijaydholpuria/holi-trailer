@@ -8,7 +8,6 @@ const textsData = {
         "Aap aur aapke poore parivaar ko\n" +
         "Dil se Holi ki dher saari shubhkamnayein!\n\n" +
         "Warm wishes from "
-
     ],
     hindi: [
         "\n\n🌈 होली की हार्दिक शुभकामनाएं 🌈\n\n" +
@@ -31,46 +30,7 @@ function generateLink() {
         return;
     }
 
-    const url = window.location.origin + window.location.pathname +
-        "?group=" + encodeURIComponent(group) +
-        "&from=" + encodeURIComponent(your) +
-        "&lang=" + lang;
-
-    // WhatsApp
-    document.getElementById("whatsappBtn").onclick = function () {
-        window.open(
-            "https://wa.me/?text=" + encodeURIComponent(url),
-            "_blank"
-        );
-    };
-
-    // Facebook
-    document.getElementById("facebookBtn").onclick = function () {
-        window.open(
-            "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url),
-            "_blank"
-        );
-    };
-
-    // Instagram
-    document.getElementById("instagramBtn").onclick = function () {
-        alert("Instagram direct link share allow nahi karta 😅\nLink copy karke bio ya story me paste karein.");
-        navigator.clipboard.writeText(url);
-    };
-    // 🔥 Yahin trailer start hoga
     startTrailer(group, your, lang);
-
-    // 🔥 WhatsApp button set hoga
-    setTimeout(() => {
-        document.getElementById("shareBox").style.display = "block";
-
-        document.getElementById("whatsappBtn").onclick = function () {
-            window.open(
-                "https://wa.me/?text=" + encodeURIComponent(url),
-                "_blank"
-            );
-        };
-    }, textsData[lang].length * 2000 + 4000);
 }
 
 function typeEffect(text, element, callback) {
@@ -81,9 +41,9 @@ function typeEffect(text, element, callback) {
         i++;
         if (i >= text.length) {
             clearInterval(interval);
-            if (callback) setTimeout(callback, 1000);
+            if (callback) setTimeout(callback, 800);
         }
-    }, 60);
+    }, 50);
 }
 
 function startTrailer(group, your, lang) {
@@ -112,29 +72,41 @@ function startTrailer(group, your, lang) {
             if (lang === "hindi") {
                 finalMessage =
                     group.toUpperCase() +
-                    "\n\n🌈 होली की हार्दिक शुभकामनाएं 🌈" + your + "\n\nकी ओर से ";
+                    textsData.hindi[0] +
+                    your;
             } else {
                 finalMessage =
                     group.toUpperCase() +
-                    "\n\n🌈 HAPPY HOLI 🌈\n\nFrom " + your;
+                    textsData.hinglish[0] +
+                    your;
             }
 
             typeEffect(finalMessage, screen, () => {
-                
-
-                // 🔥 YAHAN SHOW HOGA SHARE BUTTON
-                document.getElementById("shareBox").style.display = "block";
 
                 const url = window.location.origin + window.location.pathname +
                     "?group=" + encodeURIComponent(group) +
                     "&from=" + encodeURIComponent(your) +
                     "&lang=" + lang;
 
+                document.getElementById("shareBox").style.display = "block";
+
                 document.getElementById("whatsappBtn").onclick = function () {
                     window.open(
                         "https://wa.me/?text=" + encodeURIComponent(url),
                         "_blank"
                     );
+                };
+
+                document.getElementById("facebookBtn").onclick = function () {
+                    window.open(
+                        "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url),
+                        "_blank"
+                    );
+                };
+
+                document.getElementById("instagramBtn").onclick = function () {
+                    navigator.clipboard.writeText(url);
+                    alert("Link copied! Instagram bio ya story me paste karein 😎");
                 };
 
             });
@@ -145,7 +117,6 @@ function startTrailer(group, your, lang) {
 
     showNext();
 }
-
 
 function restart() {
     window.location.href = window.location.pathname;
@@ -167,11 +138,11 @@ function startConfetti() {
     canvas.height = window.innerHeight;
 
     let pieces = [];
-    for (let i = 0; i < 150; i++) {
+    for (let i = 0; i < 120; i++) {
         pieces.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            r: Math.random() * 6 + 4,
+            r: Math.random() * 6 + 3,
             d: Math.random() * 150
         });
     }
