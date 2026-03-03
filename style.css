@@ -1,0 +1,352 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* 🌈 Animated Holi Background */
+body {
+    padding-bottom: 50px;
+    position: relative;
+    background: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0, #ffeb3b);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 🎆 Confetti Lowest Layer */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 🎨 HOLI CHARACTERS (Middle Layer) */
+.holi-scene {
+    position: absolute;
+    bottom: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.person {
+    width: 70px;
+    position: relative;
+    animation: bounce 2s infinite ease-in-out;
+    opacity: 0.85;
+}
+
+.person.right {
+    animation-delay: 1s;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+.head {
+    width: 35px;
+    height: 35px;
+    background: #ffd7c2;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.body {
+    width: 45px;
+    height: 55px;
+    background: #3f51b5;
+    margin: 5px auto 0;
+    border-radius: 12px;
+}
+
+.person.right .body {
+    background: #009688;
+}
+
+.hand {
+    width: 30px;
+    height: 7px;
+    background: #ffd7c2;
+    position: absolute;
+    top: 50px;
+    right: -25px;
+    border-radius: 5px;
+    animation: handMove 1.5s infinite;
+}
+
+.person.right .hand {
+    left: -25px;
+    right: auto;
+    animation-delay: 0.7s;
+}
+
+@keyframes handMove {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(25deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.color-splash {
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, #ff1744, #ffeb3b, #4caf50);
+    border-radius: 50%;
+    position: absolute;
+    top: 55px;
+    right: -5px;
+    opacity: 0;
+    animation: splash 1.5s infinite;
+}
+
+.person.right .color-splash {
+    left: -5px;
+    right: auto;
+    animation-delay: 0.7s;
+}
+
+@keyframes splash {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(4);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(6);
+        opacity: 0;
+    }
+}
+
+/* 📦 Glass Form Card (Top Layer) */
+.container {
+    position: relative;
+    z-index: 3;
+    width: 90%;
+    max-width: 380px;
+    background: rgba(0, 0, 0, 0.55);
+    padding: 25px;
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    margin-bottom: 20px;
+}
+
+/* 📝 Inputs */
+input,
+select {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    margin: 8px 0;
+    width: 100%;
+    font-size: 14px;
+    outline: none;
+}
+
+/* 🔘 Button */
+button {
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    margin-top: 12px;
+    font-weight: bold;
+    border-radius: 8px;
+    width: 100%;
+    background: #ff4081;
+    color: white;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff1744;
+    transform: scale(1.05);
+}
+
+/* 🎬 Trailer Screen */
+#screen {
+    position: relative;
+    z-index: 3;
+    display: none;
+    font-size: 22px;
+    font-weight: bold;
+    min-height: 120px;
+    white-space: pre-line;
+    padding: 20px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 90%;
+}
+
+/* 📤 Share Box */
+#shareBox {
+    display: none;
+    margin-top: 20px;
+    z-index: 3;
+}
+
+/* ❤️ FIXED FOOTER */
+
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 13px;
+    z-index: 5;
+    box-shadow:0 -5px 15px rgba(0,0,0,0.3);
+}
+
+/* 📱 Mobile Optimization */
+@media(max-width:480px) {
+
+    .container {
+        padding: 20px;
+    }
+
+    #screen {
+        font-size: 18px;
+        padding: 15px;
+    }
+
+    .person {
+        width: 55px;
+    }
+
+    .head {
+        width: 28px;
+        height: 28px;
+    }
+
+    .body {
+        width: 35px;
+        height: 45px;
+    }
+
+}
+#whatsappBtn{background:#25D366;}
+#facebookBtn{background:#1877F2;}
+#instagramBtn{
+background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
+}
+/* 🔥 Share Section */
+
+#shareBox{
+display:none;
+margin-top:25px;
+z-index:3;
+}
+
+.share-title{
+font-size:16px;
+margin-bottom:10px;
+font-weight:bold;
+letter-spacing:1px;
+}
+
+.share-icons{
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.share-icons button{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+width:90px;
+height:70px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-size:14px;
+color:white;
+transition:0.3s;
+box-shadow:0 6px 15px rgba(0,0,0,0.3);
+}
+
+.share-icons i{
+font-size:22px;
+margin-bottom:5px;
+}
+
+/* Platform Colors */
+
+#whatsappBtn{background:#25D366;}
+#facebookBtn{background:#1877F2;}
+#instagramBtn{
+background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
+}
+
+/* Hover effect */
+
+.share-icons button:hover{
+transform:translateY(-5px);
+}
+
+/* Restart Button */
+
+.restart-btn{
+margin-top:15px;
+padding:8px 18px;
+font-size:13px;
+background:#ff4081;
+border-radius:20px;
+width:auto;
+}

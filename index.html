@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description"
+        content="Create personalized Holi trailers with your family and friends. Share vibrant wishes in Hindi or Hinglish!">
+    <meta name="keywords" content="Holi, Trailer, Wishes, Hindi, Hinglish, Personalized, Share">
+    <meta name="author" content="Vijay Dholpuria">
+    <meta name="theme-color" content="#ff5722">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Holi Trailer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holi Trailer 🎬</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 🔥 Favicon Setup -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <link rel="manifest" href="site.webmanifest">
+
+    <meta name="theme-color" content="#ff4081">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <canvas id="confetti"></canvas>
+    <div class="holi-scene">
+        <div class="person left">
+            <div class="head"></div>
+            <div class="body"></div>
+            <div class="hand"></div>
+            <div class="color-splash"></div>
+        </div>
+
+        <div class="person right">
+            <div class="head"></div>
+            <div class="body"></div>
+            <div class="hand"></div>
+            <div class="color-splash"></div>
+        </div>
+    </div>
+
+    <div class="container" id="formBox">
+        <h2>Create Holi Trailer 🎬 wish Holi</h2>
+        <input type="text" id="groupName" placeholder="Family / Friends Name">
+        <br>
+        <input type="text" id="yourName" placeholder="Your Name">
+        <!-- select language  -->
+        <select id="language">
+            <option value="Select Language">Select Language</option>
+            <option value="hinglish">Hinglish</option>
+            <option value="hindi">Hindi</option>
+        </select>
+        <br>
+        <br>
+        <button onclick="generateLink()">Generate & Share</button>
+        <div id="shareLink"></div>
+    </div>
+
+    <div id="screen"></div>
+    <!-- share box  -->
+    <div id="shareBox">
+        <p class="share-title">Share</p>
+
+        <div class="share-icons">
+            <button id="whatsappBtn">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </button>
+
+            <button id="facebookBtn">
+                <i class="fab fa-facebook-f"></i>
+                <span>Facebook</span>
+            </button>
+
+            <button id="instagramBtn">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+            </button>
+        </div>
+
+        <button class="restart-btn" onclick="restart()">
+            Aap bhi banake share kre apne dosto or family ko 🎁
+        </button>
+    </div>
+    <audio id="bgMusic" src="Holi.mp3" preload="auto"></audio>
+
+    <script src="script.js"></script>
+    <footer>
+        <p>Happy holi From vijay dholpuria</p>
+        <p>mobile: 7851894027</p>
+        <p>Made with ❤️ by Vijay dholpuria</p>
+    </footer>
+
+</body>
+
+</html>
